@@ -1,7 +1,14 @@
 {
-  "name": "serialized-editor",
+  "name": "@deliciousbrains/serialized-editor",
   "description": "A Vue.js component for editing data that has been serialized in PHP",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deliciousbrains/serialized-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deliciousbrains/serialized-editor/issues"
+  },
   "keywords": [
     "vue",
     "vuejs",
