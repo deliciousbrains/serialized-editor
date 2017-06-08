@@ -1,8 +1,15 @@
 {
-  "name": "prototype",
-  "description": "A Vue.js project",
-  "version": "1.0.0",
+  "name": "serialized-editor",
+  "description": "A Vue.js component for editing data that has been serialized in PHP",
+  "version": "0.1.0",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "serialized",
+    "editor"
+  ],
   "author": "Gilbert Pellegrom <gilbert@pellegrom.me>",
+  "license": "MIT",
   "main": "dist/SerializedEditor.js",
   "module": "src/index.js",
   "scripts": {
