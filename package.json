@@ -20,10 +20,11 @@
   "main": "dist/SerializedEditor.js",
   "module": "src/index.js",
   "scripts": {
-    "lib:dev": "cross-env NODE_ENV=development webpack --config build/webpack.lib.js --progress --hide-modules",
+    "lib:dev": "cross-env NODE_ENV=development webpack --config build/webpack.lib.js --watch --progress --hide-modules",
     "lib:build": "cross-env NODE_ENV=production webpack --config build/webpack.lib.js --progress --hide-modules",
-    "app:dev": "npm run lib:dev && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.app.js --open --hot",
-    "app:build": "npm run lib:build && cross-env NODE_ENV=production webpack --config build/webpack.app.js --progress --hide-modules"
+    "app:dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.app.js --open --hot",
+    "app:build": "npm run lib:build && cross-env NODE_ENV=production webpack --config build/webpack.app.js --progress --hide-modules",
+    "release": "npm run lib:build && npm run app:build"
   },
   "dependencies": {
     "vue": "^2.2.1"
