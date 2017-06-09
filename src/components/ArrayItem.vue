@@ -1,18 +1,20 @@
 <template>
-	<div class="array-item">
+	<div class="se-array-item">
 		<span v-for="(value, key) in item">
 			<array :item="value" v-if="value.type == 'a'"></array>
 			<edit-value :item="value" v-else></edit-value>
 		</span>
-		<button class="secondary small" @click="removeItem">x</button>
+		<button class="btn btn-danger btn-xs se-array-remove-item-btn" @click="removeItem" title="Remove item">
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		</button>
 	</div>
 </template>
 
 <style>
-	.array-item {
+	.se-array-item {
 		margin-left: 30px;
 	}
-	.array-item button { margin: 0; }
+	.se-array-item button { margin: 0; }
 </style>
 
 <script>

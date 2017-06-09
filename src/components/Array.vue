@@ -1,8 +1,8 @@
 <template>
-	<div class="array" :class="{'is-object': item.isObject}">
-		<div class="array-start">
+	<div class="se-array" :class="{'se-is-object': item.isObject}">
+		<div class="se-array-start">
 			<span v-if="!item.isObject">a</span>:{{ arrayLength }}:{
-			<button type="button" class="small" @click="toggleExpanded" v-html="toggleExpandedSymbol"></button>
+			<button type="button" class="btn btn-default btn-xs se-toggle-expand" @click="toggleExpanded" v-html="toggleExpandedSymbol"></button>
 		</div>
 		<div v-show="isExpanded">
 			<array-item v-for="(value, key) in values"
@@ -10,7 +10,7 @@
 					:item-key="key"
 					:key="key"
 					@remove-item="removeItem"></array-item>
-			<form class="array-add-item">
+			<form class="se-array-add-item">
 				<label>Key:</label>
 				<select v-model="newItemTypeKey">
 					<option value="i">integer</option>
@@ -23,23 +23,25 @@
 					<option value="b">boolean</option>
 					<option value="a">array</option>
 				</select>
-				<button type="button" class="primary small" @click="addItem">+</button>
+				<button type="button" class="btn btn-primary btn-xs se-array-add-item-btn" @click="addItem" title="Add item">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				</button>
 			</form>
 		</div>
-		<div class="array-end">}</div>
+		<div class="se-array-end">}</div>
 	</div>
 </template>
 
 <style>
-	.array.is-object,
-	.array.is-object .array-start {
+	.se-array.is-object,
+	.se-array.is-object .se-array-start {
 		display: inline;
 	}
-	.array-add-item {
+	.se-array-add-item {
 		margin-left: 30px;
 		padding: 0.75rem 0.5rem;
 	}
-	.array-add-item button { margin: 0; }
+	.se-array-add-item button { margin: 0; }
 </style>
 
 <script>
@@ -76,10 +78,10 @@
 			},
 			toggleExpandedSymbol() {
 				if (this.isExpanded) {
-					return '&downarrow;';
+					return '<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>';
 				}
 
-				return '&rightarrow;';
+				return '<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
 			}
 		},
 

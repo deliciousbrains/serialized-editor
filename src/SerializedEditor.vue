@@ -1,13 +1,19 @@
 <template>
 	<div class="serialized-editor" v-if="jsonDataIsValid">
-		<div class="button-group" v-if="jsonData.type == 'a'">
-			<button @click="expandAll">Expand All</button>
-			<button @click="collapseAll">Collapse All</button>
+		<div class="btn-group se-expand-collapse-btns" role="group" v-if="jsonData.type == 'a'">
+			<button class="btn btn-default se-expand-all" @click="expandAll">Expand All</button>
+			<button class="btn btn-default se-collapse-all" @click="collapseAll">Collapse All</button>
 		</div>
 		<array :item="jsonData" :expanded="true" v-if="jsonData.type == 'a'"></array>
 		<edit-value :item="jsonData" v-else></edit-value>
 	</div>
 </template>
+
+<style>
+	.se-expand-collapse-btns {
+		margin-bottom: 20px;
+	}
+</style>
 
 <script>
 	import Vue from 'vue';

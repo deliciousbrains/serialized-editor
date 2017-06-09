@@ -1,5 +1,5 @@
 <template>
-	<span class="edit-value">
+	<span class="se-edit-value">
 		<span v-if="item.type == 'N'">
 			{{ item.type }};
 		</span>
@@ -16,7 +16,7 @@
 </template>
 
 <style>
-	.edit-value input {
+	.se-edit-value input {
 		margin: 0.25rem 0;
 		padding: 0.1rem 0.5rem;
 	}
