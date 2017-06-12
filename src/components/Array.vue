@@ -1,10 +1,10 @@
 <template>
-	<div class="se-array" :class="{'se-is-object': item.isObject}">
+	<div class="se-array" :class="{'se-array-is-object': item.isObject}">
 		<div class="se-array-start">
 			<span v-if="!item.isObject">a</span>:{{ arrayLength }}:{
 			<button type="button" class="btn btn-default btn-xs se-toggle-expand" @click="toggleExpanded" v-html="toggleExpandedSymbol"></button>
 		</div>
-		<div v-show="isExpanded">
+		<div class="se-array-content" v-show="isExpanded">
 			<array-item v-for="(value, key) in values"
 					:item="value"
 					:item-key="key"
@@ -33,8 +33,11 @@
 </template>
 
 <style>
-	.se-array.is-object,
-	.se-array.is-object .se-array-start {
+	.se-array {
+		padding: 5px;
+	}
+	.se-array-is-object,
+	.se-array-is-object .se-array-start {
 		display: inline;
 	}
 	.se-array-add-item {
