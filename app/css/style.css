@@ -1,0 +1,46 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #fcfcfc;
+}
+
+.navbar-inverse {
+	background-color: #2e77b8;
+	border: 0;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+	margin-bottom: 0;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
+	color: #fff;
+}
+
+#app {
+	min-height: 100%;
+}
+.content .row {
+	min-height: calc(100vh - 50px);
+}
+
+.equal {
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+	.row.equal {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
