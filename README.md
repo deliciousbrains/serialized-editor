@@ -24,7 +24,7 @@ The package comes in two parts
 First you need to import the components: 
 
 ```javascript
-import { SerializedParser, SerializedEditor } from 'serialized-editor';
+import { SerializedParser, SerializedEditor } from '@deliciousbrains/serialized-editor';
 ```
 
 Next you need to convert the serialized data into JSON:
