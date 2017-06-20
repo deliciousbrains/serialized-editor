@@ -14,7 +14,8 @@ body {
 }
 
 .navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-text {
 	color: rgba(255, 255, 255, 0.9);
 }
 
@@ -25,9 +26,19 @@ body {
 	color: #fff;
 }
 
+.navbar-inverse .navbar-link {
+	color: rgba(255, 255, 255, 0.9);
+	text-decoration: underline;
+}
+
+.alert p {
+	margin-bottom: 10px;
+}
+
 #app {
 	min-height: 100%;
 }
+
 .content .row {
 	min-height: calc(100vh - 50px);
 }
@@ -36,6 +47,15 @@ body {
 	display: flex;
 	display: -webkit-flex;
 	flex-wrap: wrap;
+}
+
+.oss-widget-interface {
+	display: inline-block;
+	margin: 14px 15px 0 0;
+}
+
+#os-share-more {
+	right: 20px;
 }
 
 @media (min-width: 768px) {
