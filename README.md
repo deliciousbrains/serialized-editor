@@ -9,9 +9,9 @@ A Vue.js component for editing data that has been [serialized in PHP](http://php
 ## Install
 
 ```bash
-npm install serialized-editor
+npm install @deliciousbrains/serialized-editor
 // or
-yarn add serialized-editor
+yarn add @deliciousbrains/serialized-editor
 ```
 
 ## Usage
