@@ -9,9 +9,9 @@ A Vue.js component for editing data that has been [serialized in PHP](http://php
 ## Install
 
 ```bash
-npm install serialized-editor
+npm install @deliciousbrains/serialized-editor
 // or
-yarn add serialized-editor
+yarn add @deliciousbrains/serialized-editor
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ The package comes in two parts
 First you need to import the components: 
 
 ```javascript
-import { SerializedParser, SerializedEditor } from 'serialized-editor';
+import { SerializedParser, SerializedEditor } from '@deliciousbrains/serialized-editor';
 ```
 
 Next you need to convert the serialized data into JSON:
