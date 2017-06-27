@@ -17,8 +17,7 @@ export default class SerializedParser {
 				return s;
 			case 'o':
 			case 'O':
-				var s = this.parseString(true);
-				s += this.parseArray(true);
+				var s = this.parseObject();
 				return s;
 			case 's':
 				var s = this.parseString();
@@ -95,11 +94,7 @@ export default class SerializedParser {
 		return '{"type": "' + type + '", "value": "' + value + '"}';
 	}
 
-	parseString(isObject) {
-		if (isObject === undefined) {
-			isObject = false;
-		}
-
+	parseString() {
 		var type = this.readTo(':');
 		this.assert(':');
 		var length = parseInt(this.readTo(':'));
@@ -107,25 +102,45 @@ export default class SerializedParser {
 		var value = this.read(length);
 		this.assert('"');
 
-		return '{"type": "' + type + '", "value": "' + this.escapeNonPrintableChars(value) + '"' + (isObject ? ', "isObject": true' : '') + '}';
+		return '{"type": "' + type + '", "value": "' + this.escapeNonPrintableChars(value) + '"}';
 	}
 
-	parseArray(isObject) {
-		if (isObject === undefined) {
-			isObject = false;
-		}
-
+	parseArray() {
 		var type = this.readTo(':');
 		this.assert(':');
 		var arrayLength = parseInt(this.readTo(':'));
 		this.assert(':{');
 
-		var str = '';
-		if (isObject) {
-			str += ',';
-		}
+		var str = '{"type": "a", "values": [';
+		str += this.parseValues(arrayLength);
+		str += ']}';
 
-		str += '{"type": "a", "values": [';
+		this.assert('}');
+
+		return str;
+	}
+
+	parseObject() {
+		var type = this.readTo(':');
+		this.assert(':');
+		var length = parseInt(this.readTo(':'));
+		this.assert(':"');
+		var name = this.read(length);
+		this.assert('":');
+		var arrayLength = parseInt(this.readTo(':'));
+		this.assert(':{');
+
+		var str = '{"type": "' + type + '", "name": "' + name + '", "values": [';
+		str += this.parseValues(arrayLength);
+		str += ']}';
+
+		this.assert('}');
+
+		return str;
+	}
+
+	parseValues(arrayLength) {
+		var str = '';
 
 		for (var i = 0; i < arrayLength; i++) {
 			var key = this.parseSerializedString();
@@ -133,9 +148,7 @@ export default class SerializedParser {
 			str += '[' + key + ',' + val + '],';
 		}
 
-		this.assert('}');
 		str = str.replace(/,+$/, '');
-		str += ']' + (isObject ? ', "isObject": true' : '') + '}';
 
 		return str;
 	}
