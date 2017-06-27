@@ -10,23 +10,7 @@
 					:item-key="key"
 					:key="key"
 					@remove-item="removeItem"></array-item>
-			<form class="se-array-add-item">
-				<label>Key:</label>
-				<select v-model="newItemTypeKey">
-					<option value="i">integer</option>
-					<option value="s">string</option>
-				</select>
-				<label>Value:</label>
-				<select v-model="newItemTypeVal">
-					<option value="s">string</option>
-					<option value="i">integer</option>
-					<option value="b">boolean</option>
-					<option value="a">array</option>
-				</select>
-				<button type="button" class="btn btn-primary btn-xs se-array-add-item-btn" @click="addItem" title="Add item">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button>
-			</form>
+			<array-add-item @add-array-item="addItem" @remove-array-item="removeItem"></array-add-item>
 		</div>
 		<div class="se-array-end">}</div>
 	</div>
@@ -40,16 +24,12 @@
 	.se-array-is-object .se-array-start {
 		display: inline;
 	}
-	.se-array-add-item {
-		margin-left: 30px;
-		padding: 0.75rem 0.5rem;
-	}
-	.se-array-add-item button { margin: 0; }
 </style>
 
 <script>
 	import Vue from 'vue';
 	import { EventBus } from '../util/EventBus';
+	import ArrayAddItem from './ArrayAddItem.vue';
 
 	export default {
 		props: {
@@ -105,22 +85,7 @@
 					this.isExpanded = true;
 				}
 			},
-			addItem() {
-				var item = [];
-				var itemKey = new Object();
-				itemKey.type = this.newItemTypeKey;
-				itemKey.value = this.newItemTypeKey == 's' ? 'key' : 0;
-				item.push(itemKey);
-
-				var itemVal = new Object();
-				itemVal.type = this.newItemTypeVal;
-				if (this.newItemTypeVal != 'a') {
-					itemVal.value = this.itemValDefault(this.newItemTypeVal);
-				} else {
-					itemVal.values = [];
-				}
-				item.push(itemVal);
-
+			addItem(item) {
 				this.values.push(item);
 				EventBus.$emit('array-item-added');
 			},
@@ -147,6 +112,10 @@
 		beforeCreate() {
 			// https://vuejs.org/v2/guide/components.html#Circular-References-Between-Components
 			this.$options.components.ArrayItem = require('./ArrayItem.vue')
+		},
+
+		components: {
+			'array-add-item': ArrayAddItem
 		}
 	}
 </script>
