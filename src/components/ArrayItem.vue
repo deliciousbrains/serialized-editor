@@ -2,6 +2,7 @@
 	<div class="se-array-item">
 		<span class="se-array-item-col" :class="{'se-contains-array': value.type == 'a'}" v-for="(value, key) in item">
 			<array :item="value" v-if="value.type == 'a'"></array>
+			<object-item :item="value" v-else-if="value.type.toLowerCase() == 'o'"></object-item>
 			<edit-value :item="value" v-else></edit-value>
 		</span>
 		<span class="se-array-item-col">
@@ -25,9 +26,12 @@
 
 <script>
 	import Array from './Array.vue';
+	import ObjectItem from './ObjectItem.vue';
 	import EditValue from './EditValue.vue';
 
 	export default {
+		name: 'array-item',
+
 		props: ['item', 'itemKey'],
 
 		methods: {
@@ -38,6 +42,7 @@
 
 		components: {
 			'array': Array,
+			'object-item': ObjectItem,
 			'edit-value': EditValue
 		}
 	}

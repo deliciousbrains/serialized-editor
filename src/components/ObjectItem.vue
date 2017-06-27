@@ -1,10 +1,10 @@
 <template>
-	<div class="se-array">
-		<div class="se-array-start">
-			a:{{ arrayLength }}:{
+	<div class="se-object">
+		<div class="se-object-start">
+			<edit-value ref="editName" :item="name" :is-object="true"></edit-value>:{{ objectLength }}:{
 			<button type="button" class="btn btn-default btn-xs se-toggle-expand" @click="toggleExpanded" v-html="toggleExpandedSymbol"></button>
 		</div>
-		<div class="se-array-content" v-show="isExpanded">
+		<div class="se-object-content" v-show="isExpanded">
 			<array-item v-for="(value, key) in values"
 					:item="value"
 					:item-key="key"
@@ -12,22 +12,26 @@
 					@remove-item="removeItem"></array-item>
 			<array-add-item @add-array-item="addItem" @remove-array-item="removeItem"></array-add-item>
 		</div>
-		<div class="se-array-end">}</div>
+		<div class="se-object-end">}</div>
 	</div>
 </template>
 
 <style>
-	.se-array {
+	.se-object {
 		padding: 5px;
+	}
+	.se-object-start {
+		display: inline;
 	}
 </style>
 
 <script>
 	import { EventBus } from '../util/EventBus';
+	import EditValue from './EditValue.vue';
 	import ArrayAddItem from './ArrayAddItem.vue';
 
 	export default {
-		name: 'array',
+		name: 'object-item',
 
 		props: {
 			item: {
@@ -50,11 +54,17 @@
 		},
 
 		computed: {
-			arrayLength() {
+			name() {
+				return {
+					type: this.item.type,
+					value: this.item.name,
+				}
+			},
+			objectLength() {
 				return this.values.length;
 			},
 			rawOutput() {
-				return 'a:' + this.values.length + ':{';
+				return this.$refs.editName.rawOutput + ':' + this.values.length + ':{';
 			},
 			toggleExpandedSymbol() {
 				if (this.isExpanded) {
@@ -112,6 +122,7 @@
 		},
 
 		components: {
+			'edit-value': EditValue,
 			'array-add-item': ArrayAddItem
 		}
 	}

@@ -2,7 +2,7 @@
 	<span class="se-item" v-if="item.type == 'N'">
 		<span class="se-item-null">{{ item.type }};</span>
 	</span>
-	<span class="se-item" :class="{'se-item-is-object': isObject}" v-else>
+	<span class="se-item" v-else>
 		<span class="se-item-start">
 			<span class="se-item-type">{{ item.type }}:</span><span class="se-item-length" v-if="isString">{{ length }}:"</span>
 		</span>
@@ -14,7 +14,7 @@
 			<input type="text" v-model="editValue" @input="sanitizeValue" v-else>
 		</span>
 		<span class="se-item-end">
-			<span v-if="isString">"</span><span v-if="!item.isObject">;&nbsp;</span>
+			<span v-if="isString">"</span><span v-if="!isObject">;&nbsp;</span>
 		</span>
 	</span>
 </template>
@@ -58,10 +58,16 @@
 	import { EventBus } from '../util/EventBus';
 
 	export default {
+		name: 'edit-value',
+
 		props: {
 			item: {
 				type: Object,
 				required: true
+			},
+			isObject: {
+				type: Boolean,
+				default: false
 			}
 		},
 
@@ -76,16 +82,12 @@
 				var stringTypes = ['s', 'o', 'O'];
 				return stringTypes.indexOf(this.item.type) >= 0;
 			},
-			isObject() {
-				var stringTypes = ['o', 'O'];
-				return stringTypes.indexOf(this.item.type) >= 0;
-			},
 			length() {
 				return this.editValue.length;
 			},
 			rawOutput() {
 				return this.item.type + ':' + (this.isString ? this.length + ':"' : '') +
-					this.editValue + (this.isString ? '"' : '') + (this.item.isObject ? '' : ';');
+					this.editValue + (this.isString ? '"' : '') + (this.isObject ? '' : ';');
 			}
 		},
 
