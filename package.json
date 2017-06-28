@@ -17,7 +17,7 @@
   ],
   "author": "Gilbert Pellegrom <gilbert@pellegrom.me>",
   "license": "MIT",
-  "main": "dist/SerializedEditor.js",
+  "main": "dist/serialized-editor.js",
   "module": "src/index.js",
   "scripts": {
     "lib:dev": "cross-env NODE_ENV=development webpack --config build/webpack.lib.js --watch --progress --hide-modules",
