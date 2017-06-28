@@ -62,6 +62,8 @@
 				var output = this.allComponents.join('');
 
 				this.$emit('output', output);
+
+				return output;
 			},
 			findChildren(component) {
 				if (component.$children) {
