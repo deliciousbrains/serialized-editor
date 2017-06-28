@@ -1,7 +1,10 @@
 import SerializedParser from './classes/SerializedParser';
 import SerializedEditor from './SerializedEditor.vue';
 
-export {
-	SerializedParser,
-	SerializedEditor
-};
+export default {
+	install (Vue) {
+		Vue.component('serialized-editor', SerializedEditor);
+	}
+}
+
+export { SerializedParser, SerializedEditor };
