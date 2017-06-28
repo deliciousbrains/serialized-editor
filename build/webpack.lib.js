@@ -5,8 +5,8 @@ module.exports = Object.assign(base, {
 	entry: path.resolve(__dirname, '../src/index.js'),
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		filename: 'SerializedEditor.js',
-		library: 'SerializedEditor',
+		filename: 'serialized-editor.js',
+		library: 'serialized-editor',
 		libraryTarget: 'umd'
 	},
 	externals: ['vue']
