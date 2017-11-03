@@ -34,7 +34,16 @@
 
 		props: ['item', 'itemKey'],
 
+		created() {
+			this.maybeUpdateArrayKey();
+		},
+
 		methods: {
+			maybeUpdateArrayKey() {
+				if (this.item[0].type == 'i') {
+					this.item[0].value = this.itemKey;
+				}
+			},
 			removeItem() {
 				this.$emit('remove-item', this.itemKey);
 			}
@@ -44,6 +53,12 @@
 			'array': Array,
 			'object-item': ObjectItem,
 			'edit-value': EditValue
+		},
+
+		watch: {
+			item(newValue) {
+				this.maybeUpdateArrayKey();
+			}
 		}
 	}
 </script>
