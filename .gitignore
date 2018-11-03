@@ -5,3 +5,4 @@ node_modules/
 /test/unit/coverage
 npm-debug.log
 yarn-error.log
+package-lock.json

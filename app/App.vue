@@ -80,41 +80,43 @@
 </template>
 
 <style>
-	.serialized-input,
-	.serialized-output {
-		height: 100%;
-	}
-	.serialized-input textarea,
-	.serialized-output textarea {
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		padding: 20px;
-		background: #2f3843;
-		color: rgba(255,255,255,0.9);
-		border: 0;
-		outline: none;
-	}
-	.serialized-editor-wrapper {
-		padding-top: 20px;
-		margin-bottom: 80px;
-	}
-	.no-padding { padding: 0; }
-	.serialized-editor-footer {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		text-align: center;
-		margin-bottom: 30px;
-		color: #aaa;
-	}
-	.serialized-editor-footer a {
-		color: #aaa;
-		text-decoration: underline;
-	}
-	.serialized-editor-footer a:hover {
-		color: #777;
-	}
+.serialized-input,
+.serialized-output {
+  height: 100%;
+}
+.serialized-input textarea,
+.serialized-output textarea {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 20px;
+  background: #2f3843;
+  color: rgba(255, 255, 255, 0.9);
+  border: 0;
+  outline: none;
+}
+.serialized-editor-wrapper {
+  padding-top: 20px;
+  margin-bottom: 80px;
+}
+.no-padding {
+  padding: 0;
+}
+.serialized-editor-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #aaa;
+}
+.serialized-editor-footer a {
+  color: #aaa;
+  text-decoration: underline;
+}
+.serialized-editor-footer a:hover {
+  color: #777;
+}
 </style>
 
 <script>
