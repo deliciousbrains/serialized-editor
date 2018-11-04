@@ -20,38 +20,38 @@
 </template>
 
 <style>
-	.se-item,
-	.se-item-null,
-	.se-item-start,
-	.se-item-content,
-	.se-item-end {
-		display: inline-block;
-		vertical-align: middle;
-	}
+.se-item,
+.se-item-null,
+.se-item-start,
+.se-item-content,
+.se-item-end {
+  display: inline-block;
+  vertical-align: middle;
+}
 
-	.se-item {
-		padding: 5px;
-		line-height: 25px;
-	}
-	.se-item-start,
-	.se-item-null {
-		width: 38px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-	.se-item-is-object .se-item-start {
-		width: 42px;
-	}
-	.se-item-content input,
-	.se-item-content select {
-		margin: 0;
-		padding: 0;
-		width: 130px;
-		height: 25px;
-	}
-	.se-item-end {
-		width: 12px;
-	}
+.se-item {
+  padding: 5px;
+  line-height: 25px;
+}
+.se-item-start,
+.se-item-null {
+  width: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.se-item-is-object .se-item-start {
+  width: 42px;
+}
+.se-item-content input,
+.se-item-content select {
+  margin: 0;
+  padding: 0;
+  max-width: 200px;
+  height: 25px;
+}
+.se-item-end {
+  width: 12px;
+}
 </style>
 
 <script>

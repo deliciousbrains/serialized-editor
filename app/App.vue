@@ -80,41 +80,43 @@
 </template>
 
 <style>
-	.serialized-input,
-	.serialized-output {
-		height: 100%;
-	}
-	.serialized-input textarea,
-	.serialized-output textarea {
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		padding: 20px;
-		background: #2f3843;
-		color: rgba(255,255,255,0.9);
-		border: 0;
-		outline: none;
-	}
-	.serialized-editor-wrapper {
-		padding-top: 20px;
-		margin-bottom: 80px;
-	}
-	.no-padding { padding: 0; }
-	.serialized-editor-footer {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		text-align: center;
-		margin-bottom: 30px;
-		color: #aaa;
-	}
-	.serialized-editor-footer a {
-		color: #aaa;
-		text-decoration: underline;
-	}
-	.serialized-editor-footer a:hover {
-		color: #777;
-	}
+.serialized-input,
+.serialized-output {
+  height: 100%;
+}
+.serialized-input textarea,
+.serialized-output textarea {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 20px;
+  background: #2f3843;
+  color: rgba(255, 255, 255, 0.9);
+  border: 0;
+  outline: none;
+}
+.serialized-editor-wrapper {
+  padding-top: 20px;
+  margin-bottom: 80px;
+}
+.no-padding {
+  padding: 0;
+}
+.serialized-editor-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #aaa;
+}
+.serialized-editor-footer a {
+  color: #aaa;
+  text-decoration: underline;
+}
+.serialized-editor-footer a:hover {
+  color: #777;
+}
 </style>
 
 <script>
@@ -125,7 +127,7 @@
 			return {
 				input: '',
 				output: '',
-				sampleData: 'a:8:{s:4:"null";N;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}s:6:"class1";O:13:"ExampleClass1":3:{s:25:"ExampleClass1privateVar";s:16:"private variable";s:15:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}s:6:"class2";O:13:"ExampleClass2":3:{s:25:"ExampleClass2privateVar";s:16:"private variable";s:15:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}}',
+				sampleData: 'a:8:{s:4:"null";N:null;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}s:6:"class1";O:13:"ExampleClass1":3:{s:23:"ExampleClass1privateVar";s:16:"private variable";s:13:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}s:6:"class2";O:13:"ExampleClass2":3:{s:23:"ExampleClass2privateVar";s:16:"private variable";s:13:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}}',
 				error: false,
 			}
 		},
