@@ -3,6 +3,7 @@ var webpack = require("webpack")
 const VueLoaderPlugin = require("vue-loader/lib/plugin")
 
 module.exports = {
+  mode: "none",
   plugins: [new VueLoaderPlugin()],
   module: {
     rules: [
