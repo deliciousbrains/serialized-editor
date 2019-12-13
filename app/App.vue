@@ -36,7 +36,8 @@
 							<button type="button" class="btn btn-primary" @click="useSampleData">Use sample data</button>
 						</div>
 						<div class="alert alert-danger" v-if="error">
-							Invalid serialized data
+							Invalid serialized data:
+							<div class="error-message" v-text="errorMsg"></div>
 						</div>
 						<serialized-editor :json-data="parsedData" @output="updateOutput"></serialized-editor>
 					</div>
@@ -94,6 +95,9 @@
 		color: rgba(255,255,255,0.9);
 		border: 0;
 		outline: none;
+		font-family: monospace;
+		font-size: calc(100% - 1px);
+		word-break: break-all;
 	}
 	.serialized-editor-wrapper {
 		padding-top: 20px;
@@ -115,6 +119,12 @@
 	.serialized-editor-footer a:hover {
 		color: #777;
 	}
+	.error-message {
+		margin-top: 15px;
+		font-family: monospace;
+		font-size: calc(100% - 1px);
+		overflow-wrap: break-word;
+	}
 </style>
 
 <script>
@@ -125,8 +135,9 @@
 			return {
 				input: '',
 				output: '',
-				sampleData: 'a:8:{s:4:"null";N;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}s:6:"class1";O:13:"ExampleClass1":3:{s:25:"ExampleClass1privateVar";s:16:"private variable";s:15:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}s:6:"class2";O:13:"ExampleClass2":3:{s:25:"ExampleClass2privateVar";s:16:"private variable";s:15:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}}',
+				sampleData: 'a:6:{s:4:"null";N;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}}',
 				error: false,
+				errorMsg: '',
 			}
 		},
 
@@ -143,6 +154,7 @@
 					return JSON.parse(json);
 				} catch (e) {
 					this.error = true;
+					this.errorMsg = e;
 					console.error(e);
 				}
 
