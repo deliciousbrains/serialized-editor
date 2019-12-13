@@ -36,7 +36,8 @@
 							<button type="button" class="btn btn-primary" @click="useSampleData">Use sample data</button>
 						</div>
 						<div class="alert alert-danger" v-if="error">
-							Invalid serialized data
+							Invalid serialized data:
+							<div class="error-message" v-text="errorMsg"></div>
 						</div>
 						<serialized-editor :json-data="parsedData" @output="updateOutput"></serialized-editor>
 					</div>
@@ -118,6 +119,12 @@
 	.serialized-editor-footer a:hover {
 		color: #777;
 	}
+	.error-message {
+		margin-top: 15px;
+		font-family: monospace;
+		font-size: calc(100% - 1px);
+		overflow-wrap: break-word;
+	}
 </style>
 
 <script>
@@ -130,6 +137,7 @@
 				output: '',
 				sampleData: 'a:6:{s:4:"null";N;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}}',
 				error: false,
+				errorMsg: '',
 			}
 		},
 
@@ -146,6 +154,7 @@
 					return JSON.parse(json);
 				} catch (e) {
 					this.error = true;
+					this.errorMsg = e;
 					console.error(e);
 				}
 
