@@ -94,6 +94,9 @@
 		color: rgba(255,255,255,0.9);
 		border: 0;
 		outline: none;
+		font-family: monospace;
+		font-size: calc(100% - 1px);
+		word-break: break-all;
 	}
 	.serialized-editor-wrapper {
 		padding-top: 20px;
