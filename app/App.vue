@@ -125,7 +125,7 @@
 			return {
 				input: '',
 				output: '',
-				sampleData: 'a:8:{s:4:"null";N;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}s:6:"class1";O:13:"ExampleClass1":3:{s:25:"ExampleClass1privateVar";s:16:"private variable";s:15:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}s:6:"class2";O:13:"ExampleClass2":3:{s:25:"ExampleClass2privateVar";s:16:"private variable";s:15:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}}',
+        sampleData: 'a:8:{s:4:"null";N:null;s:3:"int";i:123;s:6:"string";s:3:"foo";s:4:"bool";b:1;s:5:"array";a:1:{s:3:"foo";s:3:"bar";}s:6:"object";O:8:"stdClass":1:{s:3:"foo";s:3:"bar";}s:6:"class1";O:13:"ExampleClass1":3:{s:23:"ExampleClass1privateVar";s:16:"private variable";s:13:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}s:6:"class2";O:13:"ExampleClass2":3:{s:23:"ExampleClass2privateVar";s:16:"private variable";s:13:"*protectedVar";s:18:"protected variable";s:9:"publicVar";s:15:"public variable";}}',
 				error: false,
 			}
 		},
