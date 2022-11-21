@@ -28,9 +28,10 @@
     "unit:dev": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "start": "node ."
+    "start": "http-server ./app"
   },
   "dependencies": {
+    "http-server": "^14.1.1",
     "vue": "^2.2.1"
   },
   "devDependencies": {
