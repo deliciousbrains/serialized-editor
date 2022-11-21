@@ -28,7 +28,7 @@
     "unit:dev": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.lib.js --progress --hide-modules",
+    "build": "npm run app:build",
     "start": "http-server ./app"
   },
   "dependencies": {
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",a
+    "babel-loader": "^6.0.0",
     "babel-plugin-istanbul": "^6.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
