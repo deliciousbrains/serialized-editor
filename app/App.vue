@@ -14,7 +14,7 @@
 				<div class="collapse navbar-collapse" id="navbar-collapse-1">
 					<div class="navbar-right">
 						<p class="navbar-text">
-							Made by <a href="https://deliciousbrains.com/" target="_blank" class="navbar-link delicious-brains">Delicious Brains</a>
+							Made by <a href="https://wpengine.com/" target="_blank" class="navbar-link delicious-brains">WP Engine</a>
 						</p>
 						<div class="addthis_inline_share_toolbox"></div>
 					</div>
@@ -68,7 +68,7 @@
 
 						<p>We use the AddThis social sharing widget. See <a href="http://www.addthis.com/privacy/privacy-policy" target="_blank">their privacy policy</a>.</p>
 
-						<p>We follow the practices outlined in the <a href="https://deliciousbrains.com/privacy-policy/" target="_blank">Delicious Brains Privacy Policy</a>.</p>
+						<p>We follow the practices outlined in the <a href="https://wpengine.com/legal/privacy/" target="_blank">WP Engine Privacy Policy</a>.</p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
