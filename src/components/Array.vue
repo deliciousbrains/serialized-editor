@@ -5,9 +5,9 @@
 			<button type="button" class="btn btn-default btn-xs se-toggle-expand" @click="toggleExpanded" v-html="toggleExpandedSymbol"></button>
 		</div>
 		<div class="se-array-content" v-show="isExpanded">
-			<array-item v-for="(value, key) in values"
-					:item="value"
-					:item-key="key"
+			<array-item v-for="(valueItem, key) in values"
+					:item="valueItem.value"
+					:item-key="valueItem.index"
 					:key="key"
 					@remove-item="removeItem"></array-item>
 			<array-add-item @add-array-item="addItem" @remove-array-item="removeItem"></array-add-item>
@@ -42,7 +42,8 @@
 
 		data() {
 			return {
-				values: this.item.values,
+				values: [],
+				nextIndex: 0,
 				newItemTypeKey: 'i',
 				newItemTypeVal: 's',
 				isExpanded: this.expanded,
@@ -66,6 +67,8 @@
 		},
 
 		created() {
+			this.values = this.indexedValues(this.item.values);
+
 			EventBus.$on('expand-all', () => {
 				this.isExpanded = true;
 			});
@@ -75,6 +78,33 @@
 		},
 
 		methods: {
+			indexedValues(values) {
+				var keyedValues = [],
+					idx = 0;
+
+				values.forEach(value => {
+					keyedValues.push({
+						index: idx,
+						value: value
+					});
+
+					idx++;
+				});
+
+				this.nextIndex = idx;
+
+				return keyedValues;
+			},
+			reindexValues() {
+				var idx = 0;
+
+				this.values.forEach(value => {
+					value.index = idx;
+					idx++;
+				});
+
+				this.nextIndex = idx;
+			},
 			toggleExpanded() {
 				if (this.isExpanded) {
 					this.isExpanded = false;
@@ -83,11 +113,19 @@
 				}
 			},
 			addItem(item) {
-				this.values.push(item);
+				this.values.push({
+					index: this.nextIndex,
+					value: item
+				});
+
+				this.reindexValues();
+
 				EventBus.$emit('array-item-added');
 			},
 			removeItem(key) {
 				this.values.splice(key, 1);
+				this.reindexValues();
+
 				EventBus.$emit('array-item-removed');
 			},
 
@@ -102,7 +140,7 @@
 
 		watch: {
 			item(newValue) {
-				this.values = newValue.values;
+				this.values = this.indexedValues(newValue.values);
 			}
 		},
 
